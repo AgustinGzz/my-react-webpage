@@ -1,0 +1,30 @@
+.header {
+  /* background-color: rgb(129, 75, 106); */
+  background: linear-gradient(rgb(129, 75, 106) 0%, rgb(172, 90, 15) 100%);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  color: white;
+  padding: 0 10%;
+  box-shadow: 10rem 0 10rem rgb(172, 90, 15);
+}
+
+.main-image {
+  z-index: 0;
+  width: 100%;
+  overflow: hidden;
+  height: 25rem;
+  background-color: rgb(168, 87, 32);
+}
+
+.main-image img {
+  object-fit: cover;
+  width: 110%;
+  height: 110%;
+  transform: rotateZ(-4deg) translateY(-2rem) translateX(-8rem);
+}

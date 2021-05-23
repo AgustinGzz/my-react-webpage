@@ -1,0 +1,59 @@
+.Button {
+  padding: 0.5rem 2.5rem;
+  background-color: rgba(12, 1, 1, 0.616);
+  border: none;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+}
+.Button:hover {
+  background-color: rgba(12, 1, 1, 0.747);
+  cursor: pointer;
+}
+.Button:active {
+  background-color: rgba(12, 1, 1, 0.438);
+  cursor: default;
+}
+
+.cart-icon {
+  color: white;
+  width: 20px;
+  margin-right: 10px;
+}
+
+.cart-text {
+  color: white;
+  margin-right: 10px;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.cart-badge {
+  color: white;
+  background-color: rgba(201, 46, 7, 0.671);
+  padding: 0.2em 1em;
+  border-radius: 10px;
+}
+
+/* npi que fregados ta haciendo aqui */
+.bump {
+  animation: bump 300ms ease-out;
+}
+
+@keyframes bump {
+  0% {
+    transform: scale(1);
+  }
+  10% {
+    transform: scale(0.9);
+  }
+  30% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
