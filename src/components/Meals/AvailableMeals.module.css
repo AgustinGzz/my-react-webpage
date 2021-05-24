@@ -10,6 +10,19 @@
   margin: 0;
   padding: 0;
 }
+.loading {
+  font-size: 1.7rem;
+
+  font-style: italic;
+  margin: 0.5em auto;
+}
+.fetch-error {
+  font-size: 1.7rem;
+
+  color: rgb(175, 15, 15);
+  font-weight: bold;
+  margin: 0.5em auto;
+}
 @keyframes meals-appear {
   from {
     opacity: 0;

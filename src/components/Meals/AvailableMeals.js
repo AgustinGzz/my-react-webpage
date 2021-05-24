@@ -5,12 +5,17 @@ import MealItem from "./MealItem/MealItem";
 
 const AvailableMeals = () => {
   const [menu, setMenu] = useState([]);
+  const [loadingState, setLoadingState] = useState(true);
+  const [fetchingError, setFetchingError] = useState();
 
   useEffect(() => {
     const fetchMenuFromBackend = async () => {
       const response = await fetch(
         "https://react-http-d68fa-default-rtdb.firebaseio.com/MENU.json"
       );
+      if (!response.ok) {
+        throw new Error("Failed to load menu items");
+      }
       const responseData = await response.json();
 
       const loadedMenu = [];
@@ -27,9 +32,21 @@ const AvailableMeals = () => {
       //we have to use state because we must re-render the components which
       //will use the menu data AFTER the information is fetched.
       setMenu(loadedMenu);
+      setLoadingState(false);
     };
-    fetchMenuFromBackend();
+    fetchMenuFromBackend().catch((error) => {
+      //we have to set the loading to false here because the async functio
+      //will break once we have an error
+      setLoadingState(false);
+      setFetchingError(error.message);
+      console.log(error);
+    });
   }, []);
+
+  const loadingMessage = <p className={classes.loading}>Loading menu...</p>;
+  const errorMessage = (
+    <p className={classes["fetch-error"]}>{fetchingError}</p>
+  );
 
   const menuList = menu.map((item) => (
     <MealItem
@@ -41,10 +58,14 @@ const AvailableMeals = () => {
     />
   ));
 
+  //done this way because i want my messages to be inside the Card component
+
   return (
     <section className={classes.meals}>
       <Card>
-        <ul>{menuList}</ul>
+        {loadingState && loadingMessage}
+        {fetchingError && errorMessage}
+        {!loadingState && !fetchingError && <ul>{menuList}</ul>}
       </Card>
     </section>
   );
